@@ -1,13 +1,15 @@
 package api_builder
 
 import (
+	"encoding/json"
+	"errors"
+	"fmt"
+	"io/ioutil"
+	"net/http"
+
 	"api-gateway/pkg/authmiddleware"
 	"api-gateway/pkg/logger"
 	"api-gateway/pkg/model"
-	"encoding/json"
-	"errors"
-	"io/ioutil"
-	"net/http"
 )
 
 type auth struct {
@@ -26,7 +28,7 @@ func (a *auth) Token(request model.AuthUser) (*authmiddleware.Tokens, error) {
 		return nil, err
 	}
 
-	resp, err := a.builder.postRequest(a.builder.configPaths.AuthApiUrl+authToken, req)
+	resp, err := a.builder.postRequest(fmt.Sprint(a.builder.configPaths.AuthApiUrl, authToken), req)
 	if err != nil {
 		logger.Errorf("Token.postRequest", err)
 		return nil, err
@@ -58,7 +60,7 @@ func (a *auth) CheckToken(request model.Token) error {
 		return err
 	}
 
-	resp, err := a.builder.postRequest(a.builder.configPaths.AuthApiUrl+authCheckToken, req)
+	resp, err := a.builder.postRequest(fmt.Sprint(a.builder.configPaths.AuthApiUrl, authCheckToken), req)
 	if err != nil {
 		logger.Errorf("CheckToken.postRequest", err)
 		return err

@@ -1,11 +1,12 @@
 package appauth
 
 import (
+	"net/http"
+	"strings"
+
 	"api-gateway/pkg/api_builder"
 	"api-gateway/pkg/logger"
 	"api-gateway/pkg/model"
-	"net/http"
-	"strings"
 )
 
 const StringsNumber = 2

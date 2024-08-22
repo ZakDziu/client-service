@@ -1,11 +1,13 @@
 package api
 
 import (
+	"net/http"
+
 	"api-gateway/pkg/api_builder"
 	"api-gateway/pkg/authmiddleware"
 	"api-gateway/pkg/config"
+
 	"github.com/gorilla/mux"
-	"net/http"
 )
 
 type Server struct {

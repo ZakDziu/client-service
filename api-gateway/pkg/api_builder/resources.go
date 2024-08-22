@@ -1,12 +1,14 @@
 package api_builder
 
 import (
-	"api-gateway/pkg/logger"
-	"api-gateway/pkg/model"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"net/http"
+
+	"api-gateway/pkg/logger"
+	"api-gateway/pkg/model"
 )
 
 type resources struct {
@@ -18,7 +20,7 @@ func NewResources(builder *apiBuilder) Resources {
 }
 
 func (a *resources) Users(requestParams map[string]string) (*map[int]model.User, error) {
-	resp, err := a.builder.getRequest(a.builder.configPaths.ResourcesApiUtl+resourcesUsers, requestParams)
+	resp, err := a.builder.getRequest(fmt.Sprint(a.builder.configPaths.ResourcesApiUtl, resourcesUsers), requestParams)
 	if err != nil {
 		logger.Errorf("Users.getRequest", err)
 		return nil, err
@@ -44,7 +46,7 @@ func (a *resources) Users(requestParams map[string]string) (*map[int]model.User,
 }
 
 func (a *resources) Books(requestParams map[string]string) (*map[int]model.Book, error) {
-	resp, err := a.builder.getRequest(a.builder.configPaths.ResourcesApiUtl+resourcesBooks, requestParams)
+	resp, err := a.builder.getRequest(fmt.Sprint(a.builder.configPaths.ResourcesApiUtl, resourcesBooks), requestParams)
 	if err != nil {
 		logger.Errorf("Books.getRequest", err)
 		return nil, err

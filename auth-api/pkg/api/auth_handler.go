@@ -1,10 +1,12 @@
 package api
 
 import (
+	"net/http"
+
 	"auth/pkg/logger"
 	"auth/pkg/model"
+
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 type AuthHandler struct {

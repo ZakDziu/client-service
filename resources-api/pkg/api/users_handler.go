@@ -1,9 +1,11 @@
 package api
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
+
 	"resources/pkg/model"
+
+	"github.com/gin-gonic/gin"
 )
 
 type UsersHandler struct {

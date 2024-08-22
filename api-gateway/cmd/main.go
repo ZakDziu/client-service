@@ -2,21 +2,18 @@ package main
 
 //nolint:stylecheck
 import (
-	"api-gateway/pkg/api"
-	"api-gateway/pkg/api_builder"
-	"api-gateway/pkg/authmiddleware/appauth"
-	"api-gateway/pkg/config"
-	"api-gateway/pkg/logger"
 	"context"
-	"crypto/ecdsa"
-	"crypto/x509"
-	"encoding/pem"
-	"errors"
 	"fmt"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
+
+	"api-gateway/pkg/api"
+	"api-gateway/pkg/api_builder"
+	"api-gateway/pkg/authmiddleware/appauth"
+	"api-gateway/pkg/config"
+	"api-gateway/pkg/logger"
 
 	_ "github.com/joho/godotenv/autoload"
 )
@@ -57,15 +54,4 @@ func main() {
 			logger.Infof("Can't shutdown API server: %s", err)
 		}
 	}
-}
-
-func LoadKey(key string) (*ecdsa.PrivateKey, error) {
-	block, _ := pem.Decode([]byte(key))
-	if block == nil || block.Type != "EC PRIVATE KEY" {
-		return nil, errors.New("error decoding private key from .env file")
-	}
-
-	x509Encoded := block.Bytes
-
-	return x509.ParseECPrivateKey(x509Encoded)
 }

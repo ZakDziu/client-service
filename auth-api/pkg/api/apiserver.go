@@ -6,6 +6,7 @@ import (
 
 	"auth/pkg/authmiddleware"
 	"auth/pkg/config"
+
 	"github.com/gin-gonic/gin"
 )
 

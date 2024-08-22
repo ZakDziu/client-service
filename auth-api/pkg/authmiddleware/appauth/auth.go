@@ -1,13 +1,15 @@
 package appauth
 
 import (
+	"crypto/ecdsa"
+	"net/http"
+	"strings"
+
 	"auth/pkg/authmiddleware"
 	"auth/pkg/logger"
 	"auth/pkg/model"
-	"crypto/ecdsa"
+
 	"github.com/dgrijalva/jwt-go"
-	"net/http"
-	"strings"
 )
 
 const StringsNumber = 2

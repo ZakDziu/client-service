@@ -1,9 +1,10 @@
 package api
 
 import (
-	"api-gateway/pkg/model"
 	"encoding/json"
 	"net/http"
+
+	"api-gateway/pkg/model"
 )
 
 type AuthHandler struct {

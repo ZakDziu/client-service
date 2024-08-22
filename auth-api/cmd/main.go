@@ -21,6 +21,10 @@ import (
 	"auth/pkg/logger"
 )
 
+const (
+	keyType = "EC PRIVATE KEY"
+)
+
 func main() {
 	conf, err := config.New()
 	if err != nil {
@@ -68,8 +72,8 @@ func main() {
 }
 
 func LoadKey(key string) (*ecdsa.PrivateKey, error) {
-	block, _ := pem.Decode([]byte(key))
-	if block == nil || block.Type != "EC PRIVATE KEY" {
+	block, err := pem.Decode([]byte(key))
+	if err != nil || block == nil || block.Type != keyType {
 		return nil, errors.New("error decoding private key from .env file")
 	}
 

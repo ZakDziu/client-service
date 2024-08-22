@@ -4,8 +4,9 @@ package api
 import (
 	"net/http"
 
-	"github.com/gin-gonic/gin"
 	"resources/pkg/config"
+
+	"github.com/gin-gonic/gin"
 )
 
 type Server struct {
