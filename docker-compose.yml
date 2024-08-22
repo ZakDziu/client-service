@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  api-gateway:
+    container_name: api-gateway-gateway
+    image: api-gateway
+    build:
+      context: api-gateway
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./api-gateway/:/app
+    env_file:
+      - api-gateway/.env
+    networks:
+      - client-server
+
+  auth-api:
+    container_name: auth-api-api-gateway
+    image: auth-api
+    build:
+      context: auth-api
+      dockerfile: ./Dockerfile
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./auth-api/:/app
+    env_file:
+      - auth-api/.env
+    networks:
+      - client-server
+
+  resources-api:
+    container_name: resources-api-api-gateway
+    image: resources-api
+    build:
+      context: resources-api
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./resources-api/:/app
+    ports:
+      - "8082:8082"
+    env_file:
+      - resources-api/.env
+    networks:
+      - client-server
+
+networks:
+  client-server:
+    name: client-server
