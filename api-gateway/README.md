@@ -1,5 +1,7 @@
 # Api Gateway
 
+There is required fields that need to be set in the `.env` file.
+
 
 | Name              | Required | Default | Description                           |
 |-------------------|----------|---------|---------------------------------------|
