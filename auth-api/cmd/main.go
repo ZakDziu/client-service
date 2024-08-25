@@ -72,8 +72,8 @@ func main() {
 }
 
 func LoadKey(key string) (*ecdsa.PrivateKey, error) {
-	block, err := pem.Decode([]byte(key))
-	if err != nil || block == nil || block.Type != keyType {
+	block, _ := pem.Decode([]byte(key))
+	if block == nil || block.Type != keyType {
 		return nil, errors.New("error decoding private key from .env file")
 	}
 

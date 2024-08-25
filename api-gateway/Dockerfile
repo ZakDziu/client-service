@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Install packages
 RUN apt-get update && \
-    apt-get install -y nano htop \
+    apt-get install -y nano htop
 
 # Cache and install dependencies
 COPY go.mod go.sum ./
@@ -17,6 +17,8 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Copy app files
 COPY . .
+
+# Build the application
 RUN go build -o ./app ./cmd/main.go
 
 # Install Reflex for development

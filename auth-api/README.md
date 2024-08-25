@@ -4,12 +4,12 @@ There is required fields that need to be set in the `.env` file.
 
 
 
-| Name              | Required | Default | Description                           |
-|-------------------|----------|---------|---------------------------------------|
-| SERVER_PORT       | yes      |         | :5000                                 |
-| READ_TIMEOUT      | yes      |         | 1s                                    |
-| HASH_KEY_ACCESS   | yes      |         | {access-key}                          |
-| HASH_KEY_REFRESH  | yes      |         | {refresh-key}                         |
+| Name              | Required | Default | Description   |
+|-------------------|----------|---------|---------------|
+| SERVER_PORT       | yes      |         | :8081         |
+| READ_TIMEOUT      | yes      |         | 1s            |
+| HASH_KEY_ACCESS   | yes      |         | {access-key}  |
+| HASH_KEY_REFRESH  | yes      |         | {refresh-key} |
 
 
 hash key

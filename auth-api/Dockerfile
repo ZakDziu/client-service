@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Install packages
 RUN apt-get update && \
-    apt-get install -y nano htop \
+    apt-get install -y nano htop
 
 # Cache and install dependencies
 COPY go.mod go.sum ./
